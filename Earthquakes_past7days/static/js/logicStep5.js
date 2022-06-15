@@ -26,7 +26,7 @@ let map = L.map('mapid', {
     layers: [streets]
 });
 
-/// Create the earthquake layer group
+/// Create the earthquake layer
 let earthquakes = new L.layerGroup();
 /// Define an object that contains the overlays
 let overlays = {
@@ -95,9 +95,40 @@ d3.json(earthquakeData).then(function(data) {
             layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
         }
 
-        }).addTo(earthquakes); //earthquakes adds the markers/popups to earthquakes LayerGroup
+        }).addTo(earthquakes);
     
-    ///Adds earthquakes LayerGroup to Map
+    ///Adds earthquakes Layer to Map
     earthquakes.addTo(map)
 
+
+    ////////////// LEGEND //////////////////
+    // create legend control object
+    var legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function () {
+
+        var div = L.DomUtil.create('div', 'info legend');
+            const magnitudes = [0, 1, 2, 3, 4, 5];
+            const colors = [
+                "#98ee00",
+                "#d4ee00",
+                "#eecc00",
+                "#ee9c00",
+                "#ea822c",
+                "#ea2c2c"
+                ];
+    
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < magnitudes.length; i++) {
+            console.log(colors[i])
+            div.innerHTML +=
+                '<i style="background:' + colors[i] + '"></i> ' +
+                magnitudes[i] + (magnitudes[i + 1] ? '&ndash;' + magnitudes[i + 1] + '<br>' : '+');
+                // ? evaluates condition truthy/falsey and result_if_true : result_if_false
+        }
+    
+        return div;
+    };
+    
+    legend.addTo(map);
 });
