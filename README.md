@@ -7,7 +7,7 @@ This is a Data Visualization project focusing on mapping all recent earthquakes 
 ### [Visit Web Page](https://m-miley.github.io/Mapping_Earthquakes/)
 
 **Preview**
-![Screen Shot 2022-06-16 at 6 07 30 PM](https://user-images.githubusercontent.com/100544761/174192723-54f785f0-dc0d-4628-b847-dc614fdcf518.png)
+![Screen Shot 2022-06-16 at 6 13 53 PM](https://user-images.githubusercontent.com/100544761/174193224-2a3d3cba-2a14-4cb6-aa5b-a61eca386d88.png)
 
 ### Contact
 
